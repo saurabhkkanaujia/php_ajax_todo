@@ -1,7 +1,7 @@
 <?php
 session_start();
 // session_destroy();
-    if (isset($_POST['input'])){
+    if (isset($_POST['input']) && strlen($_POST['input'])){
         if (isset($_SESSION['lists'])){
             array_push($_SESSION['lists'], $_POST['input']);
             echo json_encode($_SESSION['lists']);
@@ -32,7 +32,7 @@ session_start();
         }
     }
 
-    if(isset($_POST['updateIndex'])){
+    if(isset($_POST['updateIndex'])  && strlen($_POST['newList'])){
         if ($_POST['option'] == 'uncompleted'){
             $_SESSION['lists'][$_POST['updateIndex']] = $_POST['newList'];
             echo json_encode($_SESSION['lists']);
